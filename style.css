@@ -1,0 +1,9 @@
+option[value="Low"] {
+    background-color: yellow;
+}
+option[value="Medium"] {
+    background-color: orange;
+}
+option[value="High"] {
+    background-color: red;
+}
