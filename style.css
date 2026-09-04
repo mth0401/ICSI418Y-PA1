@@ -1,9 +1,22 @@
-option[value="Low"] {
-    background-color: yellow;
+.Low {
+    color: #918f00;
 }
-option[value="Medium"] {
-    background-color: orange;
+.Medium {
+    color: orange;
 }
-option[value="High"] {
-    background-color: red;
+.High {
+    color: red;
+}
+
+.Completed {
+    color: green;
+    text-decoration: line-through;
+}
+
+body {
+    background-color: #e3e1e1;
+}
+
+#task-list p {
+    margin: 2px;
 }
