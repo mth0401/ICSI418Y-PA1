@@ -1,11 +1,12 @@
-const submit = document.querySelector("button");
+const addTask = document.querySelector("button");
 const tasks = [];
 const showTask = document.querySelector("#show-tasks");
 const div = document.querySelector("#task-list");
 
-function onSubmit(event) {
+function onAddTask(event) {
     event.preventDefault();
-    let task = document.querySelector("#task-input").value;
+    let taskInput = document.querySelector("#task-input");
+    const task = taskInput.value;
     const priority = document.querySelector("#priority").value;
 
     if(task.trim() == "") {
@@ -21,18 +22,18 @@ function onSubmit(event) {
         }
     );
 
-    task.textContent = "";
+    taskInput.value = "";
 }
 
 function displayTasks(event) {
     event.preventDefault();
     div.textContent = "";
     tasks.forEach(element => {
-        if (!element.deleted) {
+        if (!element.deleted && !element.completed) {
             const par = document.createElement("p");
             const compButt = document.createElement("button");
             const delButt = document.createElement("button")
-            compButt.textContent = "Complete";
+            compButt.textContent = "Mark Complete";
             delButt.textContent = "Delete";
             par.textContent = "Task: " + element.name + "   || Priority: " + element.priority;
             document.querySelector("#task-list").appendChild(par);
@@ -52,10 +53,12 @@ function displayTasks(event) {
                 if (!element.completed) {
                     par.classList.add("Completed");
                     element.completed = true;
+                    compButt.textContent = "Mark Incomplete";
                 }
                 else {
                     par.classList.remove("Completed");
                     element.completed = false;
+                    compButt.textContent = "Mark Complete";
                 }
             });
 
@@ -70,5 +73,5 @@ function displayTasks(event) {
     });
 }
 
-submit.addEventListener("click", onSubmit);
+addTask.addEventListener("click", onAddTask);
 showTask.addEventListener("click", displayTasks);
